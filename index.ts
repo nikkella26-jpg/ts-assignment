@@ -112,7 +112,24 @@ function runExerciseThirteen() {}
 
 function runExerciseFourteen() {}
 
-function runExerciseFifteen() {}
+function runExerciseFifteen() {
+  let srtCnt = Number(readLine("How many stars "));
+
+  let sp1 = 1;
+  let strStr1 = "";
+
+  for (let i = srtCnt; i >= 1; i--) {
+    for (let x = sp1; x > 0; x--) {
+      strStr1 += " ";
+    }
+    sp1++;
+    for (let j = 1; j <= i; j++) {
+      strStr1 += "* ";
+    }
+    console.log(strStr1);
+    strStr1 = "";
+  }
+}
 
 function runExerciseSixteen() {}
 
