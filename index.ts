@@ -73,6 +73,7 @@ function runExerciseSix() {
 
 function runExerciseSeven() {
   const userInput: string = readLine("Enter body temerature in celsius. ");
+
   const temperature = Number(userInput);
   if (isNaN(temperature)) {
   } else {
@@ -100,7 +101,27 @@ function runExerciseEight() {
   }
 }
 
-function runExerciseNine() {}
+function runExerciseNine() {
+  let filterString = "";
+  let input = readLine("Enter a String ");
+  for (let i = 0; i < input.length; i++) {
+    if (input[i].toUpperCase() != input[i].toLowerCase()) {
+      filterString += input[i].toLowerCase();
+    }
+  }
+  let palindrome = true;
+  for (let i = 0; i < filterString.length / 2; i++) {
+    if (filterString[i] !== filterString[filterString.length - 1 - i]) {
+      palindrome = false;
+      break;
+    }
+  }
+  if (palindrome) {
+    console.log(input + " is a palindrome");
+  } else {
+    console.log(input + " is no a palindrome");
+  }
+}
 
 function runExerciseTen() {}
 
@@ -135,7 +156,9 @@ function runExerciseSixteen() {}
 
 function runExerciseSeventeen() {}
 
-function runExerciseEighteen() {}
+function runExerciseEighteen() {
+  console.log("Am I here or am I not here? That is the question. ");
+}
 
 function runExerciseNineteen() {}
 
