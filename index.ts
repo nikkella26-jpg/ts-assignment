@@ -123,9 +123,83 @@ function runExerciseNine() {
   }
 }
 
-function runExerciseTen() {}
+function runExerciseTen() {
+  // A
+  let Fox = "The quick fox jumped over the dog";
+  Fox = Fox.replace("quick", "brown");
+  Fox = Fox.replace("dog", "lazy dog");
+  console.log(Fox);
 
-function runExerciseEleven() {}
+  console.log();
+
+  // B
+
+  let word = readLine("Enter a word ");
+  let word2 = readLine("Enter another word ");
+  if (word === word2) {
+    console.log("The words are the same");
+  } else {
+    console.log("The words are diffrent");
+  }
+
+  console.log();
+
+  // C
+
+  let donk = "Donkey";
+  donk = donk.replace("D", "M");
+  console.log(donk);
+
+  console.log();
+
+  // D
+
+  let kålmården = `I am going to visit Kolmården zoo tomorrow. I am a big fan of the dolphin show. I may watch all dolphin shows 
+during the day. I would like to take a gondola safari as well. I wish to visit Bamse and his team there.`;
+  kålmården = kålmården.replaceAll("I", "We");
+  kålmården = kålmården.replaceAll("am", "are");
+  console.log(kålmården);
+
+  console.log();
+
+  // E
+
+  let singer = "She is the popular singer";
+  singer = singer.replace("popular", "most popular");
+  console.log(singer);
+
+  console.log();
+
+  // F
+
+  let friend = "A friend is the asset of your life";
+  friend = friend.replace("A", "A true");
+  console.log(friend);
+}
+
+function runExerciseEleven() {
+  let res = Number(readLine("Enter a Number "));
+  let op = readLine("choose what you want to do: +, -, *, /  ");
+
+  let number = Number(readLine("Enter a Number "));
+
+  switch (op) {
+    case "+":
+      res += number;
+      break;
+    case "-":
+      res -= number;
+      break;
+    case "*":
+      res *= number;
+      break;
+    case "/":
+      res /= number;
+      break;
+  }
+
+  console.log(`Result is ${res}`);
+}
 
 function runExerciseTwelve() {}
 
