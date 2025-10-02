@@ -175,6 +175,10 @@ during the day. I would like to take a gondola safari as well. I wish to visit B
   let friend = "A friend is the asset of your life";
   friend = friend.replace("A", "A true");
   console.log(friend);
+
+  console.log();
+
+  // G
 }
 
 function runExerciseEleven() {
