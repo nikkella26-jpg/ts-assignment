@@ -1,5 +1,6 @@
 // *** Ignore the following lines ***
 import chalk from "chalk";
+import { realpath } from "fs";
 import prompt from "prompt-sync";
 // *** Ignore the above lines ***
 
@@ -179,6 +180,22 @@ during the day. I would like to take a gondola safari as well. I wish to visit B
   console.log();
 
   // G
+
+  let seb = "My name is Sebastian Vallin";
+  seb = seb.replace("My name is ", "");
+  console.log(seb);
+
+  console.log();
+
+  // H
+
+  let array =
+    "Arrays are very common in programming, they look something like: [1,2,3,4,5]";
+  array = array.replace(
+    "Arrays are very common in programming, they look something like: [1,2,3,4,5]",
+    "[1,4,5,6,7,8]"
+  );
+  console.log(array);
 }
 
 function runExerciseEleven() {
@@ -205,11 +222,103 @@ function runExerciseEleven() {
   console.log(`Result is ${res}`);
 }
 
-function runExerciseTwelve() {}
+function runExerciseTwelve() {
+  function getUserInput(): number {
+    const input = readLine("Enter a number less than 100: ");
+    const num = Number(input);
+    if (isNaN(num) || num <= 0 || num >= 100) {
+      console.log("Invalid input. Please enter a number between 1 and 99");
+      return getUserInput();
+    }
+    return num;
+  }
+  const userNumber = getUserInput();
+  console.log("=== Using for loop ===");
+  console.log("Ascending: ");
+  for (let i = 1; i <= userNumber; i++) {
+    console.log(i);
+  }
+  console.log("Descending: ");
+  for (let i = userNumber; i >= 1; i--) {
+    console.log(i);
+  }
+  console.log("=== using while loop ===");
+  console.log("Ascending: ");
+  let i = 1;
+  while (i <= userNumber) {
+    console.log(i);
+    i++;
+  }
+  console.log("Descending: ");
+  i = userNumber;
+  while (i >= 1) {
+    console.log(i);
+    i--;
+  }
+  console.log("=== using do-while loop ===");
+  console.log("Ascending: ");
+  i = 1;
+  do {
+    console.log(i);
+    i++;
+  } while (i <= userNumber);
 
-function runExerciseThirteen() {}
+  console.log("Descending: ");
+  i = userNumber;
+  do {
+    console.log(i);
+    i--;
+  } while (i >= 1);
+}
 
-function runExerciseFourteen() {}
+function runExerciseThirteen() {
+  function getRandomNumber(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  const secretNumber = getRandomNumber(1, 10);
+  let guess: number | null = 0;
+
+  do {
+    const input = readLine("Guess the secret number (1-10): ");
+    if (input === null) {
+      console.log("Game cancelled");
+      break;
+    }
+    guess = Number(input);
+    if (isNaN(guess) || guess < 1 || guess > 10) {
+      console.log("Please enter a valid number between 1 - 10. ");
+      continue;
+    }
+    if (guess === secretNumber) {
+      console.log("Gratz you guessed right");
+      break;
+    } else {
+      console.log(" Wrong! ");
+    }
+  } while (true);
+  if (guess !== secretNumber) {
+    console.log(`The secret number was: ${secretNumber}`);
+  }
+}
+
+function runExerciseFourteen() {
+  const table = [];
+  for (let i = 1; i <= 10; i++) {
+    table.push([
+      i * 1,
+      i * 2,
+      i * 3,
+      i * 4,
+      i * 5,
+      i * 6,
+      i * 7,
+      i * 8,
+      i * 9,
+      i * 10,
+    ]);
+  }
+  console.table(table);
+}
 
 function runExerciseFifteen() {
   let srtCnt = Number(readLine("How many stars "));
@@ -230,9 +339,34 @@ function runExerciseFifteen() {
   }
 }
 
-function runExerciseSixteen() {}
+function runExerciseSixteen() {
+  let total = 0;
+  let num = Number(readLine("Give a Number: Enter 0 to stop:   "));
+  let lund = 0;
+  while (num != 0) {
+    total += num;
+    lund++;
+    num = Number(readLine("Give a Number: Enter 0 to stop:   "));
+  }
+  const avg = lund > 0 ? total / lund : 0;
+  console.log(`total ${total}`);
+  console.log(`Average ${avg}`);
+}
 
-function runExerciseSeventeen() {}
+function runExerciseSeventeen() {
+  function Fibonacci(n: number): void {
+    let a = 0,
+      b = 1;
+    console.log(` Fibonacci sequence up to ${n} terms`);
+    for (let i = 0; i < n; i++) {
+      console.log(a);
+      const next = a + b;
+      a = b;
+      b = next;
+    }
+  }
+  Fibonacci(10);
+}
 
 function runExerciseEighteen() {
   console.log("Am I here or am I not here? That is the question. ");
