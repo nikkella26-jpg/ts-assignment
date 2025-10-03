@@ -365,7 +365,7 @@ function runExerciseSeventeen() {
       b = next;
     }
   }
-  Fibonacci(Number(readLine("Write a random Number")));
+  Fibonacci(Number(readLine("Write a random Number ")));
 }
 
 function runExerciseEighteen() {
