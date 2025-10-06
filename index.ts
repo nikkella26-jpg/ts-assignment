@@ -1,7 +1,9 @@
 // *** Ignore the following lines ***
 import chalk from "chalk";
 import { realpath } from "fs";
+import { stdout } from "process";
 import prompt from "prompt-sync";
+import { stringify } from "querystring";
 // *** Ignore the above lines ***
 
 // Use the following function to read input from the user:
@@ -372,13 +374,93 @@ function runExerciseEighteen() {
   console.log("Am I here or am I not here? That is the question. ");
 }
 
-function runExerciseNineteen() {}
+function runExerciseNineteen() {
+  function calculateTriangleArea(width: number, height: number): number {
+    return 0.5 * width * height;
+  }
+  const triangleHeight: number = Number(readLine("Height "));
+  const tringleWidth: number = Number(readLine("Width "));
+  const area: number = calculateTriangleArea(triangleHeight, tringleWidth);
 
-function runExerciseTwenty() {}
+  console.log(`The area of triangle ${area}`);
+}
 
-function runExerciseTwentyOne() {}
+function runExerciseTwenty() {
+  function swap(a: number, b: number): [number, number] {
+    //console.log(`Before swap a = ${a}, b = ${b}`);
+    [a, b] = [b, a];
+    console.log(`After swap a = ${a}, b = ${b}`);
+    return [a, b];
+  }
+  let num1: number = 10;
+  let num2: number = 20;
 
-function runExerciseTwentyTwo() {}
+  console.log(`num1 = ${num1}, num2 = ${num2}`);
+  [num1, num2] = swap(num1, num2);
+
+  console.log(`num1 = ${num1}, num2 = ${num2}`);
+}
+
+function runExerciseTwentyOne() {
+  let userInput = readLine("What year were you born? ");
+  function calculateAge(birthdate: string) {
+    let today = new Date();
+    let birthDate = new Date(birthdate);
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let monthDiff = today.getMonth() - birthDate.getMonth();
+
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  }
+  console.log(calculateAge(userInput));
+}
+
+function runExerciseTwentyTwo() {
+  const userInput = readLine("Hey whats your name ? ");
+  const userInput_1 = readLine(`Hello ${userInput} what year were you born? `);
+
+  const Age = calculateAge(userInput_1);
+
+  function calculateAge(birthdate: string) {
+    const today = new Date();
+    const birthDate = new Date(birthdate);
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  }
+
+  console.log(calculateAge(userInput_1));
+
+  if (Age >= 18) {
+    const userInput_2 = readLine("Do you want a beer? ");
+    if (userInput_2.toLowerCase() === "yes") {
+      console.log("Here you go! ");
+    } else if (userInput_2.toLowerCase() === "no") {
+      console.log("suit yourself ");
+    }
+  } else if (Age <= 18) {
+    const userInput_2 = readLine("You too young, do you want soda insteed ? ");
+    if (userInput_2.toLowerCase() === "yes") {
+      console.log("Here you go! ");
+    } else if (userInput_2.toLowerCase() === "no") {
+      console.log("suit yourself! ");
+    }
+  }
+}
 
 function runExerciseTwentyThree() {}
 
