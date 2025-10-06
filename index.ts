@@ -487,9 +487,43 @@ function runExerciseTwentyFour() {
   console.log(`Average: ${Average.toFixed(2)}`);
 }
 
-function runExerciseTwentyFive() {}
+function runExerciseTwentyFive() {
+  function getRandomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max + min + 1)) + min;
+  }
+  const randomNumbers: number[] = [];
+  for (let i = 0; i < 20; i++) {
+    randomNumbers.push(getRandomInt(1, 100));
+  }
+  const evenNumbers: number[] = randomNumbers.filter((num) => num % 2 === 0);
+  const oddNumbers: number[] = randomNumbers.filter((num) => num % 2 !== 0);
 
-function runExerciseTwentSix() {}
+  console.log("All numbers (20 total:", randomNumbers);
+  console.log("Even Numbers", evenNumbers);
+  console.log("Odd Numbers", oddNumbers);
+}
+
+function runExerciseTwentSix() {
+  const input = readLine("Enter any 10 Numbers");
+  const numberArray: number[] = input
+    .split(",")
+    .map((num) => parseFloat(num.trim()))
+    .filter((num) => !isNaN(num));
+
+  if (numberArray.length !== 10) {
+    console.log(
+      `please enter exactly 10 valid nuumbers. You entered ${numberArray.length}.`
+    );
+    return;
+  }
+  const negativeNumbers = numberArray.filter((num) => num < 0);
+  console.log("\nNegative numbers: ");
+  if (negativeNumbers.length > 0) {
+    negativeNumbers.forEach((num) => console.log(num));
+  } else {
+    console.log("No negative numbers found");
+  }
+}
 
 function runExerciseTwentSeven() {}
 
