@@ -1,7 +1,7 @@
 // *** Ignore the following lines ***
 import chalk from "chalk";
-import { realpath } from "fs";
-import { stdout } from "process";
+import { read, realpath } from "fs";
+import { rawListeners, stdout } from "process";
 import prompt from "prompt-sync";
 import { stringify } from "querystring";
 // *** Ignore the above lines ***
@@ -464,7 +464,28 @@ function runExerciseTwentyTwo() {
 
 function runExerciseTwentyThree() {}
 
-function runExerciseTwentyFour() {}
+function runExerciseTwentyFour() {
+  const exercise = readLine("Enter numbers separated by commas ");
+  const numberArray: number[] = exercise
+    .split(",")
+    .map((num) => parseFloat(num.trim()))
+    .filter((num) => !isNaN(num));
+  if (numberArray.length === 0) {
+    console.log("No vald numbers");
+
+    return;
+  }
+  const min = Math.min(...numberArray);
+  const max = Math.max(...numberArray);
+  const Average =
+    numberArray.reduce((sum, num) => sum + num, 0) / numberArray.length;
+
+  console.log(`\nResults:`);
+  console.log(`Numbers: [${numberArray.join(", ")}]`);
+  console.log(`Min: ${min}`);
+  console.log(`Max: ${max}`);
+  console.log(`Average: ${Average.toFixed(2)}`);
+}
 
 function runExerciseTwentyFive() {}
 
