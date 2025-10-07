@@ -504,7 +504,7 @@ function runExerciseTwentyFive() {
 }
 
 function runExerciseTwentSix() {
-  const input = readLine("Enter any 10 Numbers");
+  const input = readLine("Enter any 10 Numbers ");
   const numberArray: number[] = input
     .split(",")
     .map((num) => parseFloat(num.trim()))
@@ -512,7 +512,7 @@ function runExerciseTwentSix() {
 
   if (numberArray.length !== 10) {
     console.log(
-      `please enter exactly 10 valid nuumbers. You entered ${numberArray.length}.`
+      `please enter exactly 10 valid numbers. You entered ${numberArray.length}.`
     );
     return;
   }
@@ -525,7 +525,31 @@ function runExerciseTwentSix() {
   }
 }
 
-function runExerciseTwentSeven() {}
+function runExerciseTwentSeven() {
+  const input = readLine("Enter 12 positive integers! ");
+  const numberArray: number[] = input
+    .split(",")
+    .map((num) => parseInt(num.trim()))
+    .filter((num) => !isNaN(num) && num > 0);
+
+  if (numberArray.length !== 12) {
+    console.log(
+      `\n Please enter 12 valid positive intergers. you entered ${numberArray.length}. `
+    );
+    process.exit(1);
+  }
+  console.log("\n All number entered: ");
+  console.log(numberArray);
+
+  const evenNumbers: number[] = numberArray.filter((num) => num % 2 === 0);
+  const oddNumbers: number[] = numberArray.filter((num) => num % 2 !== 0);
+
+  console.log("\n Even numbers");
+  console.log(evenNumbers);
+
+  console.log("\n odd numbers:");
+  console.log(oddNumbers);
+}
 
 function runExerciseTwentEight() {}
 
@@ -533,13 +557,64 @@ function runExerciseTwentNine() {}
 
 function runExerciseThirty() {}
 
-function runExerciseThirtyOne() {}
+function runExerciseThirtyOne() {
+  const input = readLine("Enter the current year: ").trim();
+  const enteredYear = parseInt(input);
+  const actualYear = new Date().getFullYear();
 
-function runExerciseThirtyTwo() {}
+  if (isNaN(enteredYear) || enteredYear < 0 || enteredYear > 2500) {
+    console.log("Invalid input. please enter a valid 4- digit year.");
+  } else if (enteredYear === actualYear) {
+    console.log(`Correct ${enteredYear} is the current year.`);
+  } else {
+    console.log(`${enteredYear} is not curret year.. it is ${actualYear}`);
+  }
+}
 
-function runExerciseThirtyThree() {}
+function runExerciseThirtyTwo() {
+  const today = new Date();
+  console.log(today.toLocaleDateString());
 
-function runExerciseThirtyFour() {}
+  const yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1);
+  console.log(yesterday.toLocaleDateString());
+
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  console.log(tomorrow.toLocaleDateString());
+}
+
+function runExerciseThirtyThree() {
+  const input = readLine("Enter a date (YYYY-MM-DD): ").trim();
+  const enteredDate = new Date(input);
+  const currentYear = new Date().getFullYear();
+
+  if (enteredDate.toString() === "Invalid Date") {
+    console.log("Invalid date format. Enter YYYY-MM-DD");
+    process.exit(1);
+  }
+  const enteredYear = enteredDate.getFullYear();
+
+  if (enteredYear < currentYear) {
+    console.log(`the year ${enteredYear} is in the past`);
+  } else if (enteredYear === currentYear) {
+    console.log(`The year ${enteredYear} is the current year`);
+  } else {
+    console.log(`The year ${enteredYear} is in the future`);
+  }
+}
+
+function runExerciseThirtyFour() {
+  let year = 1990;
+  const currentYear = new Date().getFullYear();
+  console.log(`Leap year from 1990 to ${currentYear}:`);
+  while (year <= currentYear) {
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+      console.log(year);
+    }
+    year++;
+  }
+}
 /* ^^^^^^^^^^^^  Add the rest of the exercise functions above this line ^^^^^^^^^^^^ */
 
 let keepAlive = true;
