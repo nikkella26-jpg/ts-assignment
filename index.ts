@@ -551,11 +551,112 @@ function runExerciseTwentSeven() {
   console.log(oddNumbers);
 }
 
-function runExerciseTwentEight() {}
+function runExerciseTwentEight() {
+  function getRandomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  const arraySize: number = 10;
+  const sourceArray: number[] = [];
+  for (let i = 0; i < arraySize; i++) {
+    sourceArray.push(getRandomInt(1, 100));
+  }
+  const destinationArray: number[] = [];
+  for (const num of sourceArray) {
+    if (num % 2 === 0) {
+      destinationArray.push(num);
+    }
+  }
+  for (const num of sourceArray) {
+    if (num % 2 !== 0) {
+      destinationArray.push(num);
+    }
+  }
+  console.log("source Array:", sourceArray);
+  console.log("Denstination Array:", destinationArray);
+}
 
-function runExerciseTwentNine() {}
+function runExerciseTwentNine() {
+  function getRandomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  const arraySize: number = getRandomInt(5, 15);
+  const randomArray: number[] = [];
+  for (let i = 0; i < arraySize; i++) {
+    randomArray.push(getRandomInt(1, 100));
+  }
+  function bubbleSort(arr: number[]): number[] {
+    const sortedArray = [...arr];
+    let n = sortedArray.length;
+    let swapped: boolean;
 
-function runExerciseThirty() {}
+    do {
+      swapped = false;
+      for (let i = 0; i < n - 1; i++) {
+        if (sortedArray[i] > sortedArray[i + 1]) {
+          const temp = sortedArray[i];
+          sortedArray[i + 1] = temp;
+          swapped = true;
+        }
+      }
+      n--;
+    } while (swapped);
+    return sortedArray;
+  }
+  console.log("Orginal Array: ", randomArray);
+  const sorted = bubbleSort(randomArray);
+  console.log("soretet Array", sorted);
+}
+
+function runExerciseThirty() {
+  function getRandomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  function generateUniqueRandomNumbers(count: number, max: number): number[] {
+    const numbers: Set<number> = new Set();
+
+    while (numbers.size < count) {
+      const num = getRandomInt(1, max - 1);
+      numbers.add(num);
+    }
+    return Array.from(numbers);
+  }
+  function selectionSort(arr: number[]): number[] {
+    const sorted = [...arr];
+    const len = sorted.length;
+
+    for (let i = 0; i < len - 1; i++) {
+      let minIndex = i;
+      for (let j = i + 1; j < len; j++) {
+        if (sorted[j] < sorted[minIndex]) {
+          minIndex = j;
+        }
+      }
+      if (minIndex !== i) {
+        [sorted[i], sorted[minIndex]] = [sorted[minIndex], sorted[i]];
+      }
+    }
+    return sorted;
+  }
+  const arraySize = getRandomInt(5, 15);
+  const orginalArry = generateUniqueRandomNumbers(arraySize, 20);
+  const sortedOrginal = selectionSort(orginalArry);
+  let userChoice = readLine("Do toy want to calculate 'square' or 'cube' ")
+    .toLowerCase()
+    .trim();
+  while (userChoice !== "square" && userChoice !== "cube") {
+    userChoice = readLine("Invalid input, please type square or cube ")
+      .toLowerCase()
+      .trim();
+  }
+  const transformendArray = sortedOrginal.map((num) =>
+    userChoice === "square" ? num ** 2 : num ** 3
+  );
+  console.log("Orginal sored array", sortedOrginal);
+  console.log(
+    `${userChoice === "square" ? "squared" : "cubed"} Array: `,
+    transformendArray
+  );
+}
 
 function runExerciseThirtyOne() {
   const input = readLine("Enter the current year: ").trim();
